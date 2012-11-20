@@ -26,15 +26,15 @@ $application = new Zend_Application(
 
 try {
 	$opts = new Zend_Console_Getopt(array(
-				'help|h' => 'Display usage inforation.',
-				'action|a=s' =>	'action to perform in format of "module.controller.action.param1.param2.param3..."',
-				'env|e=s' => 'defines application environment (defaults to "production")'
-			));
+		'help|h' => 'Display usage inforation.',
+		'action|a=s' =>	'action to perform in format of "module.controller.action.param1.param2.param3..."',
+		'env|e=s' => 'defines application environment (defaults to "production")'
+	));
 	
 	$opts->setOptions(array(
-				'ignoreCase' => true,
-				'dashDash' => false
-		));
+		'ignoreCase' => true,
+		'dashDash' => false
+	));
 	
 	if (isset($opts->help)) {
 		echo $opts->getUsageMessage();
@@ -43,17 +43,17 @@ try {
 	
 	if (isset($opts->action)){
 		$front = $application->getBootstrap()
-							->bootstrap('frontController')
-							->getResource('frontController');
+							 ->bootstrap('frontController')
+							 ->getResource('frontController');
 		
 		@list($action, $controller, $module) = array_reverse(explode('.', $opts->action));
 		
 		$request = new Zend_Controller_Request_Simple($action, $controller, $module);
 		
 		$front->setRequest($request)
-				->setResponse(new Zend_Controller_Response_Cli())
-				->setRouter(new Cli_Router())
-				->throwExceptions(true);
+			  ->setResponse(new Zend_Controller_Response_Cli())
+			  ->setRouter(new Cli_Router())
+			  ->throwExceptions(true);
 		
 		$application->bootstrap()->run();
 	}
