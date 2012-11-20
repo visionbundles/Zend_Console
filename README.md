@@ -1,10 +1,8 @@
-Zend Framework cli
-=================
+Zend Framework Cli
+===================
 
-Running Zend Framework at command line mode
-
-* cli example 
-* multi database
+* Zend Framework Cli
+* Zend Framework multi database
 
 Configure
 ----------
@@ -13,7 +11,17 @@ Configure
 
 How to use
 ------------
-1. change directory to Zend MVC "public" folder
-2. run "./index.php --help"
-3. run test "./index.php --action defaults.index.index"
-4. run test "./index.php --action defaults.crawler.run"
+change directory to "public" folder
+
+    ./index.php --help
+    ./index.php --action defaults.index.index
+    ./index.php --action defaults.crawler.run
+
+Environment Test Example
+--------------------------
+    ./index.php -a defaults.env.debug
+
+Feature 0.2
+--------
+    1. performance tuning
+    2. multi threading
