@@ -19,9 +19,9 @@ try {
 	$loader = Zend_Loader_Autoloader::getInstance();
 	
 	$opts = new Zend_Console_Getopt(array(
-		'help|h' => 'Display usage inforation.',
-		'action|a=s' =>	'action to perform in format of "module.controller.action.param1.param2.param3..."',
-		'env|e=s' => 'defines application environment (defaults to "production")'
+		'help|h' => 'display usage inforation.',
+		'action|a=s' =>	'action to perform in format of (module.controller.action.param1.param2.param3...)',
+		'env|e=s' => 'defined application environment (default:"production")'
 	));
 	
 	$opts->setOptions(array(
