@@ -29,9 +29,9 @@ try {
 		'dashDash' => false
 	));
 	
-	if (isset($opts->help)) {
+	if (isset($opts->help) || count($opts->getOptions()) === 0) {
 		echo $opts->getUsageMessage();
-		return true;
+		exit(1);
 	}
 	
 	// Define application environment
@@ -43,7 +43,6 @@ try {
 			APPLICATION_ENV,
 			APPLICATION_PATH . '/configs/application.ini'
 	);
-	
 	
 	if (isset($opts->action)){
 		$front = $application->getBootstrap()
@@ -64,6 +63,6 @@ try {
 	
 } catch (Zend_Console_Getopt_Exception $execption) {
 	echo $execption->getUsageMessage();
-	exit;
+	exit(1);
 }
 
