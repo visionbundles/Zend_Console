@@ -20,6 +20,7 @@ change directory to "public" folder
 Environment Test Example
 --------------------------
     ./index.php -a defaults.env.debug
+    ./index.php -a defaults.env.debug -e development
 
 Feature 0.2
 --------
