@@ -1,4 +1,4 @@
-Zend Framework Cli
+Zend_Console
 ===================
 * Zend Framework Cli
 * Zend Framework multi database
@@ -15,18 +15,5 @@ Configure
 
 How to use
 -----------
-at **public** folder
-
 * ./index.php --help
-* ./index.php --action defaults.index.index
-* ./index.php --action defaults.crawler.run
-
-Environment Test 
--------------------------
-* ./index.php -a defaults.env.debug
-* ./index.php -a defaults.env.debug -e development
-
-Feature 0.2
-------------
- * performance tuning
- * multi threading
+* ./index.php -a ${controller}.${action}
