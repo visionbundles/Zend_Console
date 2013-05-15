@@ -6,7 +6,7 @@ require_once 'Zend/Application.php';
 
 // Define path to application directory
 defined('APPLICATION_PATH')
-    || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
+    || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/application'));
 
 // Ensure library/ is on include_path
 set_include_path(implode(PATH_SEPARATOR, array(
@@ -36,7 +36,7 @@ try {
 	
 	// Define application environment
 	defined('APPLICATION_ENV')
-	|| define('APPLICATION_ENV', (null === $opts->env) ? 'production' : $opts->env);
+	|| define('APPLICATION_ENV', ($opts->env === null) ? 'production' : $opts->env);
 	
 	// Create application, bootstrap, and run
 	$application = new Zend_Application(
@@ -51,12 +51,10 @@ try {
 		
 		$params = array_reverse(explode('.', $opts->action));
 		
-		// reference nn90121@2be.com.tw
-		$module = array_pop($params);
 		$controller = array_pop($params);
 		$action = array_pop($params);
 		
-		$request = new Zend_Controller_Request_Simple($action, $controller, $module, $params);
+		$request = new Zend_Controller_Request_Simple($action, $controller, 'defaults', $params);
 		
 		$front->setRequest($request)
 			  ->setResponse(new Zend_Controller_Response_Cli())

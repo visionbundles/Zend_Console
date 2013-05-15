@@ -15,12 +15,4 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	{
 		Zend_Controller_Front::getInstance()->setParam('noViewRenderer', true);
 	}
-	
-	protected function _initDbAdapter()
-	{
-		$resource = $this->getPluginResource('multidb')->init();
-
-		Zend_Registry::set('github', $resource->getDb('github'));
-		Zend_Registry::set('fliptop', $resource->getDb('fliptop'));
-	}
 }
